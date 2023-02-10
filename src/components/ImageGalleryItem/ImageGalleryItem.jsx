@@ -7,16 +7,15 @@ import {
 } from './ImageGalleryItem.styled';
 
 class ImageGalleryItem extends Component {
-  state ={
+  state = {
     isShowModal: false,
-  }
-  
-  handleClickImg = () => {
- this.setState(({ isShowModal }) => ({
-  isShowModal: !isShowModal,
-}))
+  };
 
-  }
+  handleClickImg = () => {
+    this.setState(({ isShowModal }) => ({
+      isShowModal: !isShowModal,
+    }));
+  };
 
   render() {
     const { imgUrl, descr, largeImage } = this.props;
@@ -24,13 +23,15 @@ class ImageGalleryItem extends Component {
     return (
       <>
         <ImageGalleryItemLi onClick={this.handleClickImg}>
-          <ImageGalleryItemImage src={imgUrl} alt={descr} />
+          <ImageGalleryItemImage src={imgUrl} alt={descr}  loading="lazy" />
         </ImageGalleryItemLi>
-        {this.state.isShowModal && <Modal
-          largeImage={largeImage}
-          descr={descr}
-          onCloseModal={this.handleClickImg}
-        />}
+        {this.state.isShowModal && (
+          <Modal
+            largeImage={largeImage}
+            descr={descr}
+            onCloseModal={this.handleClickImg}
+          />
+        )}
       </>
     );
   }

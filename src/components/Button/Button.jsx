@@ -1,15 +1,16 @@
-import PropTypes from 'prop-types'
-import{Btn} from './Button.styled'
+import PropTypes from 'prop-types';
+import { Btn } from './Button.styled';
 
-function Button({incrementPage}) {
+function Button({ incrementPage }) {
   return (
-
-    <Btn type="button" onClick={incrementPage}>Load more</Btn>
-  )
+    <Btn type="button" onClick={incrementPage}>
+      Load more
+    </Btn>
+  );
 }
 
 Button.propTypes = {
-  onClick: PropTypes.func,
-}
+  incrementPage: PropTypes.func.isRequired,
+};
 
-export default Button
+export default Button;

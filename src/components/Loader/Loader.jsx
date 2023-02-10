@@ -1,17 +1,19 @@
-import { Bars } from  'react-loader-spinner'
+import { Hearts } from 'react-loader-spinner';
 
 function Loader(props) {
   return (
-<Bars
-  height="80"
-  width="80"
-  color="#4fa94d"
-  ariaLabel="bars-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-/>
-  )
+    <Hearts
+      height="100"
+      width="100"
+      color="#22a6b3"
+      ariaLabel="hearts-loading"
+      wrapperStyle={{
+        margin: '20px auto',
+      }}
+      wrapperClass=""
+      visible={true}
+    />
+  );
 }
 
-export default Loader
+export default Loader;
