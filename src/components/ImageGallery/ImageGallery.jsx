@@ -17,34 +17,40 @@ class ImageGallery extends Component {
     totalPages: 1,
   };
 
-  async componentDidUpdate(pP, pS) {
+ componentDidUpdate(pP, pS) {
     if (pP.imageName !== this.props.imageName) {
       this.setState({ data: [] });
+      
     }
 
     if (pP.imageName !== this.props.imageName || pP.page !== this.props.page) {
       this.setState({ isLoading: true });
+      this.fetchImages()
+     
+    }
+    
+  }
 
-      try {
-        const response = await creatrGallery({
-          q: this.props.imageName,
-          page: this.props.page,
-        });
+   fetchImages = async()=>{
+    try {
+      const response = await creatrGallery({
+        q: this.props.imageName,
+        page: this.props.page,
+      });
 
-        this.setState(pS => ({
-          data: [...pS.data, ...response.hits],
-          totalPages: response.totalHits / 12,
-        }));
+      this.setState(pS => ({
+        data: [...pS.data, ...response.hits],
+        totalPages: response.totalHits / 12,
+      }));
 
-        if (response.total === 0) throw new Error();
-      } catch (error) {
-        toast.error(
-          'Sorry, there are no images matching your search query. Please try again.',
-          { theme: 'colored' }
-        );
-      } finally {
-        this.setState({ isLoading: false });
-      }
+      if (response.total === 0) throw new Error();
+    } catch (error) {
+      toast.error(
+        'Sorry, there are no images matching your search query. Please try again.',
+        { theme: 'colored' }
+      );
+    } finally {
+      this.setState({ isLoading: false });
     }
   }
 
