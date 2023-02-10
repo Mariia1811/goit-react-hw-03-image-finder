@@ -1,17 +1,45 @@
+import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ImageGalleryItemLi, ImageGalleryItemImage } from './ImageGalleryItem.styled';
+import Modal from '../Modal/Modal';
+import {
+  ImageGalleryItemLi,
+  ImageGalleryItemImage,
+} from './ImageGalleryItem.styled';
 
-function ImageGalleryItem({ imgUrl, descr }) {
-  return (
-    <ImageGalleryItemLi>
-      <ImageGalleryItemImage src={imgUrl} alt={descr} />
-    </ImageGalleryItemLi>
-  );
+class ImageGalleryItem extends Component {
+  state ={
+    isShowModal: false,
+  }
+  
+  handleClickImg = () => {
+ this.setState(({ isShowModal }) => ({
+  isShowModal: !isShowModal,
+}))
+
+  }
+
+  render() {
+    const { imgUrl, descr, largeImage } = this.props;
+
+    return (
+      <>
+        <ImageGalleryItemLi onClick={this.handleClickImg}>
+          <ImageGalleryItemImage src={imgUrl} alt={descr} />
+        </ImageGalleryItemLi>
+        {this.state.isShowModal && <Modal
+          largeImage={largeImage}
+          descr={descr}
+          onCloseModal={this.handleClickImg}
+        />}
+      </>
+    );
+  }
 }
 
 ImageGalleryItem.propTypes = {
   imgUrl: PropTypes.string,
   descr: PropTypes.string,
+  largeImage: PropTypes.string,
 };
 
 export default ImageGalleryItem;

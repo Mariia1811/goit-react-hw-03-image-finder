@@ -25,12 +25,12 @@ class Modal extends Component {
   };
 
   render() {
-    const { largeImage, tags } = this.props;
+    const { largeImage, descr } = this.props;
 
     const templete = (
       <Overlay onClick={this.handleBackdropClose}>
         <ModalEl>
-          <img src={largeImage} alt={tags} />
+          <img src={largeImage} alt={descr} />
         </ModalEl>
       </Overlay>
     );
@@ -40,8 +40,8 @@ class Modal extends Component {
 
 Modal.propTypes = {
   largeImage: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
+  descr: PropTypes.string.isRequired,
+  onCloseModal: PropTypes.func.isRequired,
 };
 
 export default Modal;

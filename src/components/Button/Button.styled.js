@@ -4,7 +4,7 @@ export const Btn = styled.button`
 margin: 0 auto;
  padding: 8px 16px;
     border-radius: 6px;
-    background-color: #CAD3C8;
+    background-color: #22a6b3;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
     display: inline-block;
@@ -22,7 +22,7 @@ margin: 0 auto;
       0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   
   &:hover {
-    background-color: #dfe6e9;
+    background-color: #7ed6df;
   }
 `
    
